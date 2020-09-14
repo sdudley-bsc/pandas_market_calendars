@@ -10,9 +10,10 @@ from tests.test_market_calendar import FakeCalendar, FakeBreakCalendar
 
 
 def test_get_calendar():
-    assert isinstance(mcal.get_calendar('NYSE'), NYSEExchangeCalendar)
+    tc_nyse_class = mcal.trading_calendars_mirror.XNYSExchangeCalendar
+    assert isinstance(mcal.get_calendar('NYSE'), tc_nyse_class)
     cal = mcal.get_calendar('NYSE', datetime.time(10, 0), datetime.time(14, 30))
-    assert isinstance(cal, NYSEExchangeCalendar)
+    assert isinstance(cal, tc_nyse_class)
     assert cal.open_time == datetime.time(10, 0)
     assert cal.close_time == datetime.time(14, 30)
 

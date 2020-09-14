@@ -57,10 +57,18 @@ class TradingCalendar(MarketCalendar):
     def special_closes_adhoc(self):
         return self._tc.special_closes_adhoc
 
-
 calendars = trading_calendars.calendar_utils._default_calendar_factories  # noqa
+tc_alias_dict = trading_calendars.calendar_utils._default_calendar_aliases # noqa
 
-# TODO: add the aliases from their alias dict (watch out for collision, actually, best to not do this right now
+# reverse the order of the dictionary (keys to values, values to keys)
+alias_dict = dict()
+for key in tc_alias_dict:
+    value = alias_dict.get(tc_alias_dict[key], list())
+    value.append(key)
+    alias_dict[tc_alias_dict[key]] = value
+
 for exchange in calendars:
+    aliases = [exchange]
+    aliases.extend(alias_dict.get(exchange, []))
     locals()[exchange + 'ExchangeCalendar'] = type(exchange, (TradingCalendar, ),
-                                                   {'_tc_class': calendars[exchange], 'alias': [exchange]})
+                                                   {'_tc_class': calendars[exchange], 'aliases': aliases})
