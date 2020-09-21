@@ -7,7 +7,7 @@ from pandas_market_calendars.exchange_calendar_tsx import TSXExchangeCalendar, V
 
 def test_time_zone():
     assert TSXExchangeCalendar().tz == pytz.timezone('Canada/Eastern')
-    assert TSXExchangeCalendar().name == 'TSX'
+    assert TSXExchangeCalendar().name == 'mcal.TSX'
 
 
 def test_victoria_day():

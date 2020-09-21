@@ -19,11 +19,11 @@ class ICEExchangeCalendar(MarketCalendar):
 
     https://www.theice.com/publicdocs/futures_us/ICE_Futures_US_Regular_Trading_Hours.pdf # noqa
     """
-    aliases = ['ICE', 'ICEUS', 'NYFE']
+    aliases = ['mcal.ICE']
 
     @property
     def name(self):
-        return "ICE"
+        return "mcal.ICE"
 
     @property
     def tz(self):

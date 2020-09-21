@@ -46,11 +46,11 @@ class LSEExchangeCalendar(MarketCalendar):
     - Boxing Day
     - Dec. 28th (if Boxing Day is on a weekend)
     """
-    aliases = ['LSE']
+    aliases = ['mcal.LSE']
 
     @property
     def name(self):
-        return "LSE"
+        return "mcal.LSE"
 
     @property
     def tz(self):

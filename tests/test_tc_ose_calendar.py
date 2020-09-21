@@ -10,31 +10,30 @@
 import pandas as pd
 import pytz
 
-from pandas_market_calendars.exchange_calendar_ose import OSEExchangeCalendar
+import pandas_market_calendars as mcal
+
+ose = mcal.get_calendar('XOSL')
 
 TIMEZONE = pytz.timezone("Europe/Oslo")
 
 
 def test_time_zone():
-    assert OSEExchangeCalendar().tz == pytz.timezone("Europe/Oslo")
+    assert ose.tz == pytz.timezone("Europe/Oslo")
 
 
 def test_name():
-    assert OSEExchangeCalendar().name == "OSE"
+    assert ose.name == "XOSL"
 
 
 def test_open_time_tz():
-    ose = OSEExchangeCalendar()
     assert ose.open_time.tzinfo == ose.tz
 
 
 def test_close_time_tz():
-    ose = OSEExchangeCalendar()
     assert ose.close_time.tzinfo == ose.tz
 
 
 def test_2017_calendar():
-    ose = OSEExchangeCalendar()
     ose_schedule = ose.schedule(
         start_date=pd.Timestamp("2017-04-11", tz=TIMEZONE),
         end_date=pd.Timestamp("2017-04-13", tz=TIMEZONE)
@@ -76,7 +75,6 @@ def test_2017_calendar():
 
 
 def test_2018_calendar():
-    ose = OSEExchangeCalendar()
     ose_schedule = ose.schedule(
         start_date=pd.Timestamp("2018-03-27", tz=TIMEZONE),
         end_date=pd.Timestamp("2018-03-29", tz=TIMEZONE)
@@ -120,7 +118,6 @@ def test_2018_calendar():
 
 
 def test_2019_calendar():
-    ose = OSEExchangeCalendar()
     ose_schedule = ose.schedule(
         start_date=pd.Timestamp("2019-04-16", tz=TIMEZONE),
         end_date=pd.Timestamp("2019-04-18", tz=TIMEZONE)

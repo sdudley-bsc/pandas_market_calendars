@@ -41,11 +41,11 @@ class CMEExchangeCalendar(MarketCalendar):
     - Good Friday
     - Christmas
     """
-    aliases = ['CME', 'CBOT', 'COMEX', 'NYMEX']
+    aliases = ['mcal.CME']
 
     @property
     def name(self):
-        return "CME"
+        return "mcal.CME"
 
     @property
     def tz(self):

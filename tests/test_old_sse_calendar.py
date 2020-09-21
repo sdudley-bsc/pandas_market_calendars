@@ -9,7 +9,7 @@ from pandas_market_calendars.holidays_cn import all_holidays
 
 def test_time_zone():
     assert SSEExchangeCalendar().tz == pytz.timezone('Asia/Shanghai')
-    assert SSEExchangeCalendar().name == 'SSE'
+    assert SSEExchangeCalendar().name == 'mcal.SSE'
 
 
 def test_all_holidays():

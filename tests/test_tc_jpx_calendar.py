@@ -5,17 +5,17 @@ import pandas as pd
 import pytz
 from pandas.testing import assert_index_equal
 
-from pandas_market_calendars.exchange_calendar_jpx import JPXExchangeCalendar
+import pandas_market_calendars as mcal
+
+jpx_calendar = mcal.get_calendar('XTKS')
 
 
 def test_time_zone():
-    assert JPXExchangeCalendar().tz == pytz.timezone('Asia/Tokyo')
-    assert JPXExchangeCalendar().name == 'JPX'
+    assert jpx_calendar.tz == pytz.timezone('Asia/Tokyo')
+    assert jpx_calendar.name == 'XTKS'
 
 
 def test_2017_jpx_holidays():
-    jpx_calendar = JPXExchangeCalendar()
-
     # holidays we expect
     holidays_2017 = [
         pd.Timestamp("2017-01-01", tz='UTC'),
@@ -44,8 +44,6 @@ def test_2017_jpx_holidays():
 
 
 def test_2018_jpx_holidays():
-    jpx_calendar = JPXExchangeCalendar()
-
     # holidays we expect
     holidays_2018 = [
         pd.Timestamp("2018-01-01", tz='UTC'),
@@ -75,8 +73,6 @@ def test_2018_jpx_holidays():
 
 
 def test_jpx_2019_holidays():
-    jpx_calendar = JPXExchangeCalendar()
-
     # holidays we expect in 2019 (calendar changes for new Emperor)
     holidays_2019 = [
         pd.Timestamp("2019-01-01", tz='UTC'),
@@ -109,8 +105,6 @@ def test_jpx_2019_holidays():
 
 
 def test_jpx_2020_holidays():
-    jpx_calendar = JPXExchangeCalendar()
-
     # holidays we expect in 2020 (calendar changes for Olympics)
     holidays_2020 = [
         pd.Timestamp("2020-01-01", tz='UTC'),
@@ -140,8 +134,6 @@ def test_jpx_2020_holidays():
 
 
 def test_jpx_2021_holidays():
-    jpx_calendar = JPXExchangeCalendar()
-
     # holidays we expect in 2021 (regular calendar generation resumed)
     holidays_2021 = [
         pd.Timestamp("2021-01-01", tz='UTC'),
@@ -171,25 +163,23 @@ def test_jpx_2021_holidays():
 
 
 def test_jpx_closes_at_lunch():
-    jpx_calendar = JPXExchangeCalendar()
     jpx_schedule = jpx_calendar.schedule(
         start_date=datetime.datetime(2015, 1, 14, tzinfo=pytz.timezone('Asia/Tokyo')),
         end_date=datetime.datetime(2015, 1, 16, tzinfo=pytz.timezone('Asia/Tokyo'))
     )
 
-    assert JPXExchangeCalendar.open_at_time(
+    assert jpx_calendar.open_at_time(
         schedule=jpx_schedule,
         timestamp=datetime.datetime(2015, 1, 14, 11, 0, tzinfo=pytz.timezone('Asia/Tokyo'))
     )
 
-    assert not JPXExchangeCalendar.open_at_time(
+    assert not jpx_calendar.open_at_time(
         schedule=jpx_schedule,
         timestamp=datetime.datetime(2015, 1, 14, 12, 0, tzinfo=pytz.timezone('Asia/Tokyo'))
     )
 
 
 def test_jpx_correctly_counts_jpx_autumn_equinox():
-    jpx_calendar = JPXExchangeCalendar()
     jpx_schedule = jpx_calendar.schedule(start_date='2016-09-01', end_date='2019-09-30')
     assert pd.Timestamp('2016-09-22') not in jpx_schedule.index
     assert pd.Timestamp('2016-09-23') in jpx_schedule.index
@@ -208,7 +198,6 @@ def test_jpx_correctly_counts_jpx_autumn_equinox():
 
 
 def test_jpx_correctly_counts_jpx_vernal_equinox():
-    jpx_calendar = JPXExchangeCalendar()
     jpx_schedule = jpx_calendar.schedule(start_date='2017-03-01', end_date='2019-09-30')
 
     assert pd.Timestamp('2017-03-20') not in jpx_schedule.index
@@ -232,7 +221,6 @@ def test_jpx_trading_days_since_1949(request):
     expected.name = None
 
     # calculated expected going direct to the underlying regular and ad_hoc calendars
-    jpx_calendar = JPXExchangeCalendar()
     start_date = expected[0]
     end_date = expected[-1]
     reg_holidays = jpx_calendar.regular_holidays.holidays(start_date, end_date)

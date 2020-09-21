@@ -337,11 +337,11 @@ class XBOMExchangeCalendar(MarketCalendar):
     of holidays back to 1997, and forward through 2020.  There are no known
     early closes or late opens.
     """
-    aliases = ['XBOM']
+    aliases = ['mcal.XBOM']
 
     @property
     def name(self):
-        return "XBOM"
+        return "mcal.XBOM"
 
     @property
     def tz(self):

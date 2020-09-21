@@ -16,11 +16,11 @@ class SSEExchangeCalendar(MarketCalendar):
     LUNCH BREAK :facepalm: : 11:30 AM - 1:00 PM Asia/Shanghai
     Close Time: 3:00 PM, Asia/Shanghai
     """
-    aliases = ['SSE']
+    aliases = ['mcal.SSE']
 
     @property
     def name(self):
-        return "SSE"
+        return "mcal.SSE"
 
     @property
     def tz(self):

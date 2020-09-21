@@ -31,11 +31,11 @@ class ASXExchangeCalendar(MarketCalendar):
 	- Last Business Day of the Year
 
 	"""
-	aliases = ['ASX']
+	aliases = ['mcal.ASX']
 
 	@property
 	def name(self):
-		return "ASX"
+		return "mcal.ASX"
 
 	@property
 	def tz(self):

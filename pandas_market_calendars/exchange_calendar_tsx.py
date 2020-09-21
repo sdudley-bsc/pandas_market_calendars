@@ -81,11 +81,11 @@ class TSXExchangeCalendar(MarketCalendar):
     - Boxing Day
     - Dec. 28th (if Boxing Day is on a weekend)
     """
-    aliases = ['TSX', 'TSXV']
+    aliases = ['mcal.TSX']
 
     @property
     def name(self):
-        return "TSX"
+        return "mcal.TSX"
 
     @property
     def tz(self):

@@ -165,11 +165,11 @@ class BMFExchangeCalendar(MarketCalendar):
     - Day before New Year's Eve (December 30 if NYE falls on a Saturday)
     - New Year's Eve (December 31)
     """
-    aliases = ['BMF']
+    aliases = ['mcal.BMF']
 
     @property
     def name(self):
-        return "BMF"
+        return "mcal.BMF"
 
     @property
     def tz(self):

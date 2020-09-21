@@ -83,11 +83,11 @@ class SIXExchangeCalendar(MarketCalendar):
     Exchange calendar for SIX
 
     """
-    aliases = ['SIX']
+    aliases = ['mcal.SIX']
 
     @property
     def name(self):
-        return "SIX"
+        return "mcal.SIX"
 
     @property
     def tz(self):

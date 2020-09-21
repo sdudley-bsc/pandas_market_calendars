@@ -1,12 +1,14 @@
 import pandas as pd
 import pytz
 
-from pandas_market_calendars.exchange_calendar_six import SIXExchangeCalendar
+import pandas_market_calendars as mcal
+
+six = mcal.get_calendar('XSWX')
 
 
 def test_time_zone():
-    assert SIXExchangeCalendar().tz == pytz.timezone('Europe/Zurich')
-    assert SIXExchangeCalendar().name == 'SIX'
+    assert six.tz == pytz.timezone('Europe/Zurich')
+    assert six.name == 'XSWX'
 
 
 def test_2018_holidays():
@@ -15,7 +17,6 @@ def test_2018_holidays():
     # christmas (observed): 2018-12-25
     # new years (observed): on a weekend, not rolled forward
     # https://www.six-group.com/exchanges/download/participants/regulation/trading_guides/trading_calendar_2018.pdf
-    six = SIXExchangeCalendar()
     good_dates = six.valid_days('2018-01-01', '2018-12-31', tz='Europe/Zurich')
 
     for date in ["2018-05-24", "2018-06-15", "2018-03-23", "2018-12-21", "2018-12-27"]:
@@ -30,7 +31,6 @@ def test_eve_day_weekend():
     # christmas (observed): 2017-12-25
     # boxing day (observed): 2017-12-26
     # https://www.six-group.com/exchanges/download/participants/regulation/trading_guides/trading_calendar_2017.pdf
-    six = SIXExchangeCalendar()
     good_dates = six.valid_days('2017-12-01', '2017-12-31', tz='Europe/Zurich')
 
     for date in ["2017-12-22", "2017-12-27"]:
@@ -44,7 +44,6 @@ def test_christmas_weekend():
     # christmas (observed): on a weekend
     # boxing day (observed): 2016-12-26
     # https://www.six-group.com/exchanges/download/participants/regulation/trading_guides/trading_calendar_2016.pdf
-    six = SIXExchangeCalendar()
     good_dates = six.valid_days('2016-12-01', '2016-12-31', tz='Europe/Zurich')
 
     for date in ["2016-12-22", "2016-12-23", "2016-12-27"]:
@@ -58,7 +57,6 @@ def test_boxing_day_weekend():
     # christmas (observed): 2020-12-25
     # boxing day (observed): on a weekend, not rolled forward
     # https://www.six-group.com/exchanges/download/participants/regulation/trading_guides/trading_calendar_2020.pdf
-    six = SIXExchangeCalendar()
     good_dates = six.valid_days('2020-12-01', '2020-12-31', tz='Europe/Zurich')
 
     for date in ["2020-12-22", "2020-12-22", "2020-12-28"]:

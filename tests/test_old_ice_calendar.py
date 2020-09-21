@@ -4,7 +4,7 @@ from pandas_market_calendars.exchange_calendar_ice import ICEExchangeCalendar
 
 
 def test_test_name():
-    assert ICEExchangeCalendar().name == 'ICE'
+    assert ICEExchangeCalendar().name == 'mcal.ICE'
 
 
 def test_hurricane_sandy_one_day():

@@ -8,7 +8,7 @@ from pandas_market_calendars.exchange_calendar_hkex import HKEXExchangeCalendar
 
 def test_time_zone():
     assert HKEXExchangeCalendar().tz == pytz.timezone('Asia/Shanghai')
-    assert HKEXExchangeCalendar().name == 'HKEX'
+    assert HKEXExchangeCalendar().name == 'mcal.HKEX'
 
 
 def test_2018_holidays():

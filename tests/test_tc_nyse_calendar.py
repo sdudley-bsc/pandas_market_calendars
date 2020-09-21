@@ -255,16 +255,15 @@ def test_all_full_day_holidays_since_1928(request):
     expected.name = None
 
     # calculated expected going direct to the underlying regular and ad_hoc calendars
-    nyse = cal
-    actual = pd.DatetimeIndex(nyse.adhoc_holidays).tz_convert(None).sort_values()
+    actual = pd.DatetimeIndex(cal.adhoc_holidays).tz_convert(None).sort_values()
     slice_locs = actual.slice_locs(expected[0], expected[-1])
     actual = actual[slice_locs[0]:slice_locs[1]]
-    actual = actual.append(nyse.regular_holidays.holidays(expected[0], expected[-1]))
+    actual = actual.append(cal.regular_holidays.holidays(expected[0], expected[-1]))
     actual = actual.sort_values().unique()
     assert_index_equal(expected, actual)
 
     # using the holidays method
-    actual = pd.DatetimeIndex(nyse.holidays().holidays).unique()
+    actual = pd.DatetimeIndex(cal.holidays().holidays).unique()
     slice_locs = actual.slice_locs(expected[0], expected[-1])
     actual = actual[slice_locs[0]:slice_locs[1]]
     assert_index_equal(expected, actual)

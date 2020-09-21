@@ -8,7 +8,7 @@ from pandas_market_calendars.exchange_calendar_xbom import XBOMExchangeCalendar,
 
 def test_time_zone():
     assert XBOMExchangeCalendar().tz == pytz.timezone('Asia/Calcutta')
-    assert XBOMExchangeCalendar().name == 'XBOM'
+    assert XBOMExchangeCalendar().name == 'mcal.XBOM'
 
 
 def test_holidays():

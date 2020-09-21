@@ -349,11 +349,11 @@ class HKEXExchangeCalendar(MarketCalendar):
     LUNCH BREAK :facepalm: : 12:00 AM - 1:00 PM Asia/Shanghai
     Close Time: 4:00 PM, Asia/Shanghai
     """
-    aliases = ['HKEX']
+    aliases = ['mcal.HKEX']
 
     @property
     def name(self):
-        return "HKEX"
+        return "mcal.HKEX"
 
     @property
     def tz(self):

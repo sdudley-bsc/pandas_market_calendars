@@ -109,11 +109,11 @@ class OSEExchangeCalendar(MarketCalendar):
     - New Year's Eve
     """
 
-    aliases = ['OSE']
+    aliases = ['mcal.OSE']
 
     @property
     def name(self):
-        return "OSE"
+        return "mcal.OSE"
 
     @property
     def tz(self):
