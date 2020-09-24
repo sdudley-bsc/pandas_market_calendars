@@ -248,7 +248,7 @@ def test_all_full_day_holidays_since_1928(request):
     make sure that it matches.
     """
     # get the expected dates from the csv file
-    expected = pd.read_csv(os.path.join(request.fspath.dirname, 'data', 'nyse_all_full_day_holidays_since_1928.csv'),
+    expected = pd.read_csv(os.path.join(request.fspath.dirname, 'data', 'old_nyse_all_full_day_holidays_since_1928.csv'),
                            index_col=0, parse_dates=True, header=None).index
     expected.name = None
 

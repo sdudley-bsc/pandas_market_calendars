@@ -277,6 +277,6 @@ def test_special_early_close_is_not_trading_day():
 
     nyse = cal
     actual = nyse.schedule('1956-12-20', '1956-12-30')
-    dates = [pd.Timestamp('1956-12-' + x) for x in ['20', '21', '24', '26', '27', '28']]
+    dates = [pd.Timestamp('1956-12-' + x) for x in ['20', '21', '26', '27', '28']]
     expected = pd.DatetimeIndex(dates)
     assert_index_equal(actual.index, expected)
