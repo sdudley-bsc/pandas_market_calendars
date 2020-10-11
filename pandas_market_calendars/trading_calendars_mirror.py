@@ -34,6 +34,16 @@ class TradingCalendar(MarketCalendar):
         return self._tc.close_times[0][1].replace(tzinfo=self.tz)
 
     @property
+    def break_start(self):
+        time = self._tc.break_start_times
+        return time[0][1] if time else None
+
+    @property
+    def break_end(self):
+        time = self._tc.break_end_times
+        return time[0][1] if time else None
+
+    @property
     def regular_holidays(self):
         return self._tc.regular_holidays
 
