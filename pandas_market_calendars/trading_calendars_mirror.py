@@ -27,7 +27,7 @@ class TradingCalendar(MarketCalendar):
     @property
     def open_time_default(self):
         tc_time = self._tc.open_times[0][1]
-        return time(tc_time.hour, max(tc_time.minute - 1, 0), tzinfo=self.tz)  # aligns the open time standard with mcal
+        return time(tc_time.hour, max(tc_time.minute - 1, 0), tzinfo=self.tz)  # aligns tc standard with mcal
 
     @property
     def close_time_default(self):
@@ -35,8 +35,10 @@ class TradingCalendar(MarketCalendar):
 
     @property
     def break_start(self):
-        time = self._tc.break_start_times
-        return time[0][1] if time else None
+        tc_time = self._tc.break_start_times
+        if not tc_time: return None
+        tc_time = tc_time[0][1]
+        return time(tc_time.hour, tc_time.minute - 1, tzinfo=self.tz)  # aligns tc standard with mcal
 
     @property
     def break_end(self):
