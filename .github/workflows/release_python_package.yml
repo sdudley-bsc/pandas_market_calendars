@@ -33,9 +33,9 @@ jobs:
       - name: Build source distribution and wheel files
         run: python -m build
       - name: Extract version
-        run: export VERSION=$(grep "^VERSION.*" setup.py | cut -d " " -f 3)
+        run: echo "PMC_VERSION=$(grep "^VERSION.*" setup.py | cut -d " " -f 3)" >> $GITHUB_ENV
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
           files: dist/*
-          tag_name: ${VERSION}
+          tag_name: ${{ env.PMC_VERSION }}
