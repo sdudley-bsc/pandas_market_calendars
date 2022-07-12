@@ -9,14 +9,14 @@ from os import path
 from setuptools import find_packages, setup
 
 # version
-VERSION = '3.5.3'
+VERSION = '3.5.4'
 
 # requirements
 REQUIRED_PYTHON = '>=3.8.0'
 REQUIRED_PACKAGES = ['pandas>=1.1', 'pytz', 'python-dateutil', 'exchange_calendars>=3.3']
 
 # Package meta-data
-NAME = 'pandas_market_calendars'
+NAME = 'test_pandas_market_calendars_sdudley_cfl'
 DESCRIPTION = 'Market and exchange trading calendars for pandas'
 SOURCE_URL = 'https://github.com/rsheftel/pandas_market_calendars'
 DOCS_URL = 'https://pandas-market-calendars.readthedocs.io/en/latest/'
