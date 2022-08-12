@@ -3,6 +3,11 @@
 
 Updates
 -------
+3.5.7 (08/12/22)
+~~~~~~~~~~~~~~
+- Add script that extracts release notes.
+- Update release workflow so that release notes are used.
+
 3.5 (06/25/22)
 ~~~~~~~~~~~~~~
 - Updated BMF
