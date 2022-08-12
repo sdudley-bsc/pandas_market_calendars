@@ -52,7 +52,7 @@ jobs:
       - name: Extract version
         run: echo "PMC_VERSION=$(grep "^VERSION.*" setup.py | cut -d " " -f 3 | tr -d "'" | tr -d '"')" >> $GITHUB_ENV
       - name: Extract release notes
-        run: ./extract_release_notes.py ${{ env.PMC_VERSION }}
+        run: python ./extract_release_notes.py ${{ env.PMC_VERSION }}
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
