@@ -3,6 +3,10 @@
 
 Updates
 -------
+3.5.8 (08/13/22)
+~~~~~~~~~~~~~~
+- Update GitHub Action workflow to run unit tests.
+
 3.5.7 (08/12/22)
 ~~~~~~~~~~~~~~
 - Add script that extracts release notes.
