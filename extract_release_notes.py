@@ -15,7 +15,7 @@ import sys
 parser = argparse.ArgumentParser()
 parser.add_argument("version_number")
 args = parser.parse_args()
-version_number = args["version_number"]
+version_number = args.version_number
 # version_components = version_number.split(".")
 
 with open("./docs/change_log.rst", "r", encoding="utf-8") as file:
