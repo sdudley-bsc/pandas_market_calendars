@@ -3,6 +3,10 @@
 
 Updates
 -------
+3.5.9 (08/13/22)
+~~~~~~~~~~~~~~
+- Add file unit test that fails to test CI.
+
 3.5.8 (08/13/22)
 ~~~~~~~~~~~~~~
 - Update GitHub Action workflow to run unit tests.
